@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distance Calculator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/daisyui@1.15.0/dist/full.js"></script>
+
+    <script>
+      function toRadians(degrees) {
+        return (degrees * Math.PI) / 180;
+      }
+
+      function haversineDistance(lat1, lon1, lat2, lon2) {
+        const R = 6367.5; // Radius of Earth in km
+
+        const dLat = toRadians(lat2 - lat1);
+        const dLon = toRadians(lon2 - lon1);
+
+        const a =
+          Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+          Math.cos(toRadians(lat1)) *
+            Math.cos(toRadians(lat2)) *
+            Math.sin(dLon / 2) *
+            Math.sin(dLon / 2);
+
+        const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        const distance = R * c;
+
+        return distance;
+      }
+
+      function calculateDistance() {
+        const lat1 = parseFloat(document.getElementById("lat1").value);
+        const lon1 = parseFloat(document.getElementById("lon1").value);
+        const lat2 = parseFloat(document.getElementById("lat2").value);
+        const lon2 = parseFloat(document.getElementById("lon2").value);
+
+        if (isNaN(lat1) || isNaN(lon1) || isNaN(lat2) || isNaN(lon2)) {
+          alert("Please enter valid coordinates.");
+          return;
+        }
+
+        const distance = haversineDistance(lat1, lon1, lat2, lon2);
+        document.getElementById(
+          "result"
+        ).innerText = `Distance: ${distance.toFixed(2)} km`;
+      }
+    </script>
+  </head>
+
+  <body class="bg-gray-100 font-sans p-4">
+    <div class="max-w-xl mx-auto p-6 bg-white rounded-lg shadow-lg">
+      <h1 class="text-2xl font-bold text-center mb-6">Distance Calculator</h1>
+
+      <div class="space-y-4">
+        <div class="flex flex-col">
+          <label for="lat1" class="text-lg font-semibold">Latitude 1:</label>
+          <input
+            type="number"
+            id="lat1"
+            class="input input-bordered input-primary w-full"
+            placeholder="Enter Latitude of Place 1"
+            step="any"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="lon1" class="text-lg font-semibold">Longitude 1:</label>
+          <input
+            type="number"
+            id="lon1"
+            class="input input-bordered input-primary w-full"
+            placeholder="Enter Longitude of Place 1"
+            step="any"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="lat2" class="text-lg font-semibold">Latitude 2:</label>
+          <input
+            type="number"
+            id="lat2"
+            class="input input-bordered input-primary w-full"
+            placeholder="Enter Latitude of Place 2"
+            step="any"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="lon2" class="text-lg font-semibold">Longitude 2:</label>
+          <input
+            type="number"
+            id="lon2"
+            class="input input-bordered input-primary w-full"
+            placeholder="Enter Longitude of Place 2"
+            step="any"
+          />
+        </div>
+
+        <div class="flex justify-center">
+          <button
+            onclick="calculateDistance()"
+            class="btn btn-primary w-full mt-4"
+          >
+            Calculate Distance
+          </button>
+        </div>
+
+        <div
+          id="result"
+          class="text-center text-xl font-semibold mt-4 text-green-600"
+        ></div>
+      </div>
+    </div>
+  </body>
+</html>
