@@ -20,25 +20,24 @@ cd haversine-formula
 
 Alternatively, you can use the `haversine.js` file in your own project by importing it.
 
-
 ## The Haversine Formula
 
 The Haversine formula is used to determine the great-circle distance between two points on a sphere, given their longitudes and latitudes. It is a special case of a more general formula in spherical trigonometry, the law of haversines, that relates the sides and angles of spherical triangles.
 
 The formula is as follows:
 
--   **a** = sin²(Δφ/2) + cos φ₁ ⋅ cos φ₂ ⋅ sin²(Δλ/2)
--   **c** = 2 ⋅ atan2(√a, √(1−a))
--   **d** = R ⋅ c
+- **a** = sin²(Δφ/2) + cos φ₁ ⋅ cos φ₂ ⋅ sin²(Δλ/2)
+- **c** = 2 ⋅ atan2(√a, √(1−a))
+- **d** = R ⋅ c
 
 Where:
 
--   **φ** is latitude
--   **λ** is longitude
--   **R** is the radius of Earth (average radius = 6,371km)
--   **Δφ** is the difference in latitude
--   **Δλ** is the difference in longitude
--   **d** is the distance between the two points
+- **φ** is latitude
+- **λ** is longitude
+- **R** is the radius of Earth (average radius = 6,371km)
+- **Δφ** is the difference in latitude
+- **Δλ** is the difference in longitude
+- **d** is the distance between the two points
 
 ## Code
 
