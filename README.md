@@ -2,13 +2,6 @@
 
 This project provides a simple and efficient tool to calculate the distance between two geographical points using the Haversine formula. The application is built with HTML, and Tailwind CSS, and includes a JavaScript implementation of the formula.
 
-## Tech Stack
-
-- HTML
-- TailwindCSS
-- DaisyUI
-- JavaScript
-
 ## Installation
 
 To get started with this project, you can simply clone the repository and open the `index.html` file in your web browser.
